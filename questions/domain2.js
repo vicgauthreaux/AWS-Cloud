@@ -1,5 +1,5 @@
 /* CLF-C02 Domain 2: Security and Compliance (30% of the exam)
-   48 questions covering task statements 2.1, 2.2, 2.3, 2.4
+   75 questions covering task statements 2.1, 2.2, 2.3, 2.4
    Format matches the original class bank, so new questions can be
    appended by hand in exactly the same shape. */
 window.quizBanks = window.quizBanks || {};
@@ -193,6 +193,108 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.1", topic: "Shared responsibility model"
   },
   {
+    q: "Which task becomes AWS's responsibility when a company moves from self-managed databases on EC2 to Amazon DynamoDB?",
+    choices: [
+      "Patching and maintaining the underlying database software and servers",
+      "Deciding which items to store in a table",
+      "Granting applications permission to read the table",
+      "Designing the table's partition key",
+    ],
+    answer: 0,
+    explain: "DynamoDB is fully managed and serverless. There is no instance, no engine version, and no patch window for the customer to think about.",
+    why_others_are_not_correct: {
+      1: "The data you store is always yours.",
+      2: "Access control is always the customer's responsibility.",
+      3: "Data modeling is application design work and stays with you.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
+    q: "Which of these is AWS responsible for securing?",
+    choices: [
+      "The virtualization layer that separates customer workloads",
+      "Operating system firewall rules on an EC2 instance",
+      "The strength of an IAM user's password",
+      "Which objects in an S3 bucket are public",
+    ],
+    answer: 0,
+    explain: "The hypervisor and the isolation between customers are part of the infrastructure AWS builds and secures.",
+    why_others_are_not_correct: {
+      1: "Anything inside the guest operating system is the customer's responsibility.",
+      2: "Password policy is set and enforced by the customer.",
+      3: "Bucket and object permissions are customer configuration.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
+    q: "A company stores unencrypted customer records in Amazon S3 and they are exposed. Under the shared responsibility model, who was responsible for encrypting them?",
+    choices: [
+      "The customer",
+      "AWS",
+      "Amazon S3 service team",
+      "Jointly, with AWS taking the lead",
+    ],
+    answer: 0,
+    explain: "Data protection, including whether to encrypt, is the customer's side of the model. AWS supplies the encryption capability; enabling it is your decision.",
+    why_others_are_not_correct: {
+      1: "AWS secures the infrastructure, not your data classification and encryption choices.",
+      2: "The service team builds the service.",
+      3: "There is no shared lead on customer data protection.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
+    q: "Which statement about the shared responsibility model and AWS Lambda is correct?",
+    choices: [
+      "AWS manages the runtime environment; the customer is responsible for the function code and its permissions",
+      "AWS is responsible for the function code",
+      "The customer patches the Lambda execution environment",
+      "Neither party is responsible for the function's IAM role",
+    ],
+    answer: 0,
+    explain: "With Lambda there is no server for you to patch. Your responsibility narrows to the code you upload, its dependencies, and the permissions you grant it.",
+    why_others_are_not_correct: {
+      1: "Your code is always yours.",
+      2: "AWS maintains the execution environment.",
+      3: "The execution role is customer-configured and is a common source of over-permissioning.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
+    q: "Which is an example of a control that is SHARED between AWS and the customer?",
+    choices: [
+      "Patch management, where AWS patches the infrastructure and the customer patches guest systems",
+      "Physical access to data centers",
+      "Choosing an S3 bucket policy",
+      "Maintaining the AWS global network",
+    ],
+    answer: 0,
+    explain: "Some controls are genuinely shared. Patching is the standard example: AWS handles its layer and you handle yours, and both must happen.",
+    why_others_are_not_correct: {
+      1: "Physical access is entirely AWS's responsibility.",
+      2: "Bucket policies are entirely the customer's.",
+      3: "The global network is entirely AWS's.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
+    q: "A company wants to verify that AWS is meeting its side of the shared responsibility model. What should it review?",
+    choices: [
+      "AWS third-party audit reports available in AWS Artifact",
+      "Its own CloudTrail logs",
+      "The EC2 instance's system logs",
+      "Its monthly AWS invoice",
+    ],
+    answer: 0,
+    explain: "You cannot audit AWS data centers yourself, so AWS provides independent auditors' reports through Artifact as evidence that its controls are operating.",
+    why_others_are_not_correct: {
+      1: "CloudTrail shows activity in your own account.",
+      2: "System logs show what happened inside your instance.",
+      3: "The invoice shows charges.",
+    },
+    domain: 2, task: "2.1", topic: "Shared responsibility model"
+  },
+  {
     q: "An auditor asks a company for a copy of the AWS SOC 2 compliance report. Where does the company get it?",
     choices: [
       "AWS Artifact",
@@ -278,6 +380,23 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.2", topic: "AWS Control Tower"
   },
   {
+    q: "Which service centrally configures and manages firewall rules across multiple accounts in an organization?",
+    choices: [
+      "AWS Firewall Manager",
+      "AWS WAF",
+      "Amazon VPC",
+      "AWS Shield Standard",
+    ],
+    answer: 0,
+    explain: "Firewall Manager sits above WAF, Shield Advanced, and security groups, applying a consistent policy across every account in an AWS Organization.",
+    why_others_are_not_correct: {
+      1: "WAF protects individual applications; Firewall Manager administers WAF at scale.",
+      2: "VPC provides the network itself.",
+      3: "Shield Standard is automatic DDoS protection with nothing to administer.",
+    },
+    domain: 2, task: "2.2", topic: "AWS Firewall Manager"
+  },
+  {
     q: "Which service lets you create and control the encryption keys used to protect your data across AWS services?",
     choices: [
       "AWS Key Management Service (AWS KMS)",
@@ -310,6 +429,40 @@ window.quizBanks.domain2 = [
       3: "Network ACLs filter traffic at the subnet level.",
     },
     domain: 2, task: "2.2", topic: "AWS Organizations"
+  },
+  {
+    q: "Which service aggregates security findings from GuardDuty, Inspector, and Macie into one dashboard?",
+    choices: [
+      "AWS Security Hub",
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Systems Manager",
+    ],
+    answer: 0,
+    explain: "Security Hub is the single pane of glass. It collects findings from multiple AWS security services and checks your account against security standards.",
+    why_others_are_not_correct: {
+      1: "CloudWatch handles metrics, logs, and alarms.",
+      2: "CloudTrail records API activity.",
+      3: "Systems Manager handles operational tasks.",
+    },
+    domain: 2, task: "2.2", topic: "AWS Security Hub"
+  },
+  {
+    q: "Which service helps analyze and visualize security findings to determine the root cause of a potential issue?",
+    choices: [
+      "Amazon Detective",
+      "Amazon GuardDuty",
+      "AWS Config",
+      "AWS Artifact",
+    ],
+    answer: 0,
+    explain: "Detective takes findings, often from GuardDuty, and builds linked visualizations of the related activity so an investigator can work out what actually happened.",
+    why_others_are_not_correct: {
+      1: "GuardDuty generates the findings; Detective investigates them.",
+      2: "Config tracks resource configuration.",
+      3: "Artifact provides compliance reports.",
+    },
+    domain: 2, task: "2.2", topic: "Amazon Detective"
   },
   {
     q: "Which service continuously monitors for malicious activity and unauthorized behavior using machine learning and threat intelligence?",
@@ -363,6 +516,23 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.2", topic: "Amazon Macie"
   },
   {
+    q: "Who is responsible for determining whether a workload on AWS meets a specific regulatory requirement such as HIPAA?",
+    choices: [
+      "The customer, using AWS compliance evidence to support the assessment",
+      "AWS, which certifies every customer workload",
+      "The auditor, who configures the workload",
+      "AWS Support, as part of the Business plan",
+    ],
+    answer: 0,
+    explain: "AWS certifies its own infrastructure and makes the evidence available, but whether your particular application and configuration meet a regulation is your assessment to make.",
+    why_others_are_not_correct: {
+      1: "AWS certifies its services, not each customer's workload.",
+      2: "Auditors assess; they do not configure your systems.",
+      3: "Support plans do not provide compliance certification.",
+    },
+    domain: 2, task: "2.2", topic: "Compliance"
+  },
+  {
     q: "A company must store data in a specific country to meet a legal requirement. How does AWS support this?",
     choices: [
       "The customer chooses the AWS Region where data is stored",
@@ -378,6 +548,40 @@ window.quizBanks.domain2 = [
       3: "Data stays in the Region you choose unless you configure replication.",
     },
     domain: 2, task: "2.2", topic: "Compliance programs"
+  },
+  {
+    q: "Which statement about AWS and customer data location is correct?",
+    choices: [
+      "Customers choose the Region, and AWS does not move the data elsewhere without instruction",
+      "AWS replicates all data to at least three Regions automatically",
+      "AWS stores data in whichever Region is cheapest",
+      "Data location is determined by the customer's billing address",
+    ],
+    answer: 0,
+    explain: "Region selection is the customer's control over data residency, and AWS states that it does not move customer content out of the selected Region.",
+    why_others_are_not_correct: {
+      1: "Cross-Region replication is something you configure and pay for.",
+      2: "AWS does not relocate data for cost reasons.",
+      3: "Billing address has no effect on where resources run.",
+    },
+    domain: 2, task: "2.2", topic: "Data residency"
+  },
+  {
+    q: "Which service provisions and manages the TLS certificates used to encrypt traffic to a load balancer or CloudFront distribution?",
+    choices: [
+      "AWS Certificate Manager",
+      "AWS KMS",
+      "AWS Secrets Manager",
+      "AWS IAM",
+    ],
+    answer: 0,
+    explain: "Certificate Manager issues and renews public TLS certificates at no charge for use with supported AWS services, which removes the usual expiry surprise.",
+    why_others_are_not_correct: {
+      1: "KMS manages encryption keys for data at rest.",
+      2: "Secrets Manager stores application secrets.",
+      3: "IAM manages identities and permissions.",
+    },
+    domain: 2, task: "2.2", topic: "Encryption in transit"
   },
   {
     q: "What is the difference between encryption at rest and encryption in transit?",
@@ -397,6 +601,23 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.2", topic: "Encryption in transit and at rest"
   },
   {
+    q: "A security team wants to be notified whenever a resource in any account drifts out of compliance with a required configuration. Which service provides this?",
+    choices: [
+      "AWS Config with Config rules",
+      "AWS CloudTrail",
+      "Amazon Inspector",
+      "AWS Trusted Advisor",
+    ],
+    answer: 0,
+    explain: "Config rules continuously evaluate resources against a desired configuration and flag anything non-compliant, which can trigger a notification or remediation.",
+    why_others_are_not_correct: {
+      1: "CloudTrail records the API call but does not evaluate compliance.",
+      2: "Inspector scans for software vulnerabilities.",
+      3: "Trusted Advisor runs periodic best-practice checks, not continuous custom rules.",
+    },
+    domain: 2, task: "2.2", topic: "Governance at scale"
+  },
+  {
     q: "Which combination would you use to collect application log files from EC2 instances and alert when errors spike?",
     choices: [
       "Amazon CloudWatch Logs with a CloudWatch alarm",
@@ -412,6 +633,40 @@ window.quizBanks.domain2 = [
       3: "Those protect against web and DDoS attacks.",
     },
     domain: 2, task: "2.2", topic: "Logging and monitoring"
+  },
+  {
+    q: "Which AWS service issues the temporary, limited-privilege credentials used when a role is assumed?",
+    choices: [
+      "AWS Security Token Service",
+      "AWS KMS",
+      "AWS Secrets Manager",
+      "Amazon Cognito",
+    ],
+    answer: 0,
+    explain: "STS mints the short-lived credentials behind role assumption and federation. The expiry is what makes roles safer than long-lived access keys.",
+    why_others_are_not_correct: {
+      1: "KMS manages encryption keys.",
+      2: "Secrets Manager stores and rotates application secrets.",
+      3: "Cognito handles application end-user identity and uses STS underneath.",
+    },
+    domain: 2, task: "2.3", topic: "AWS STS"
+  },
+  {
+    q: "Which IAM feature identifies resources in your account that are shared with an external entity?",
+    choices: [
+      "IAM Access Analyzer",
+      "IAM credential report",
+      "IAM password policy",
+      "IAM groups",
+    ],
+    answer: 0,
+    explain: "Access Analyzer examines resource policies and reports anything reachable from outside your account or organization, which surfaces unintended sharing.",
+    why_others_are_not_correct: {
+      1: "The credential report lists users and the state of their credentials.",
+      2: "The password policy sets complexity rules.",
+      3: "Groups bundle permissions for users.",
+    },
+    domain: 2, task: "2.3", topic: "Access Analyzer"
   },
   {
     q: "An employee with programmatic access leaves the company. What is the correct immediate action?",
@@ -448,6 +703,40 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.3", topic: "Amazon Cognito"
   },
   {
+    q: "An administrator needs a list of all IAM users in the account showing whether each has MFA enabled and when their keys were last rotated. What provides this?",
+    choices: [
+      "The IAM credential report",
+      "AWS CloudTrail",
+      "AWS Config",
+      "The billing dashboard",
+    ],
+    answer: 0,
+    explain: "The credential report is a downloadable file listing every IAM user and the status of their passwords, access keys, and MFA devices.",
+    why_others_are_not_correct: {
+      1: "CloudTrail logs API calls rather than summarizing credential state.",
+      2: "Config tracks resource configuration.",
+      3: "The billing dashboard shows spend.",
+    },
+    domain: 2, task: "2.3", topic: "Credential report"
+  },
+  {
+    q: "What is the recommended way to let a user in one AWS account access resources in another account the company owns?",
+    choices: [
+      "Create an IAM role in the target account that the user assumes",
+      "Create a duplicate IAM user in the target account and share the password",
+      "Make the resources publicly accessible",
+      "Email the target account's access keys to the user",
+    ],
+    answer: 0,
+    explain: "A cross-account role is assumed on demand and issues temporary credentials, so there is no second password to manage and access can be revoked in one place.",
+    why_others_are_not_correct: {
+      1: "Duplicate users and shared passwords break accountability and multiply what has to be maintained.",
+      2: "Public access exposes resources to everyone.",
+      3: "Sharing access keys by email is a serious security failure.",
+    },
+    domain: 2, task: "2.3", topic: "Cross-account access"
+  },
+  {
     q: "What does federated access to AWS mean?",
     choices: [
       "Users authenticate with an external identity provider and then receive temporary AWS credentials",
@@ -482,6 +771,23 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.3", topic: "IAM Identity Center"
   },
   {
+    q: "Which practice does AWS recommend for IAM permissions management?",
+    choices: [
+      "Grant permissions to groups or roles rather than to individual users",
+      "Attach an administrator policy to every user for convenience",
+      "Use the root user for all administrative tasks",
+      "Share one IAM user among the operations team",
+    ],
+    answer: 0,
+    explain: "Managing permissions at the group or role level scales and stays consistent. Per-user policies drift and become impossible to audit.",
+    why_others_are_not_correct: {
+      1: "Blanket administrator access violates least privilege.",
+      2: "The root user should be reserved for the few tasks that require it.",
+      3: "Shared identities destroy accountability in the audit trail.",
+    },
+    domain: 2, task: "2.3", topic: "IAM best practices"
+  },
+  {
     q: "What is the primary purpose of an IAM group?",
     choices: [
       "To attach a common set of permissions to many users at once",
@@ -514,6 +820,23 @@ window.quizBanks.domain2 = [
       3: "IAM evaluates policies automatically and never prompts.",
     },
     domain: 2, task: "2.3", topic: "IAM policies"
+  },
+  {
+    q: "By default, what permissions does a newly created IAM user have?",
+    choices: [
+      "None, until permissions are granted",
+      "Full administrative access",
+      "Read-only access to all services",
+      "Access to Amazon S3 only",
+    ],
+    answer: 0,
+    explain: "IAM is deny by default. A new user can sign in but can do nothing until a policy grants specific permissions, which is least privilege in action.",
+    why_others_are_not_correct: {
+      1: "Administrative access must be explicitly granted.",
+      2: "No permissions are granted implicitly, including read-only.",
+      3: "No service access is granted by default.",
+    },
+    domain: 2, task: "2.3", topic: "IAM policy evaluation"
   },
   {
     q: "What is the main advantage of an IAM role over an IAM user with access keys?",
@@ -601,6 +924,23 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.3", topic: "Password policy"
   },
   {
+    q: "A developer needs to read from one S3 bucket. Which permission grant follows least privilege?",
+    choices: [
+      "Read access to that specific bucket only",
+      "Full access to Amazon S3",
+      "Administrator access to the account",
+      "Read access to all AWS services",
+    ],
+    answer: 0,
+    explain: "Scope the grant to the exact action and the exact resource. If the need grows later, the policy can be widened deliberately.",
+    why_others_are_not_correct: {
+      1: "Full S3 access includes buckets the developer has no reason to touch.",
+      2: "Administrator access is far beyond the requirement.",
+      3: "Account-wide read access still exposes data unnecessarily.",
+    },
+    domain: 2, task: "2.3", topic: "Principle of least privilege"
+  },
+  {
     q: "Which task can ONLY be performed by the AWS account root user?",
     choices: [
       "Closing the AWS account",
@@ -651,6 +991,23 @@ window.quizBanks.domain2 = [
       4: "The root user cannot be deleted while the account exists.",
     },
     domain: 2, task: "2.3", topic: "Root user"
+  },
+  {
+    q: "A customer notices an EC2 instance in their account sending spam after a compromise. What should they do FIRST?",
+    choices: [
+      "Isolate the instance and investigate, then report through the appropriate AWS channel",
+      "Delete the entire AWS account",
+      "Ignore it because AWS secures the infrastructure",
+      "Open a billing dispute",
+    ],
+    answer: 0,
+    explain: "Containment comes first, then investigation. The compromise is on the customer's side of the shared responsibility model, so remediation is theirs to perform.",
+    why_others_are_not_correct: {
+      1: "Deleting the account destroys evidence and every other workload.",
+      2: "AWS secures infrastructure; a compromised guest instance is the customer's responsibility.",
+      3: "This is a security incident, not a billing matter.",
+    },
+    domain: 2, task: "2.4", topic: "AWS Abuse"
   },
   {
     q: "A company wants to deploy a third-party intrusion detection appliance in its AWS environment. Where can it find and subscribe to one?",
@@ -755,6 +1112,57 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.4", topic: "AWS WAF"
   },
   {
+    q: "Which approach lets administrators open a shell on a private EC2 instance without exposing SSH to the internet or managing SSH keys?",
+    choices: [
+      "AWS Systems Manager Session Manager",
+      "Opening port 22 to 0.0.0.0/0",
+      "Assigning a public IP address to every instance",
+      "Disabling the security group",
+    ],
+    answer: 0,
+    explain: "Session Manager connects through the Systems Manager service rather than an inbound network path, so the instance needs no public address, no open port, and no key pair.",
+    why_others_are_not_correct: {
+      1: "Opening SSH to the whole internet is the exposure you are trying to avoid.",
+      2: "Public IP addresses increase the attack surface unnecessarily.",
+      3: "Security groups cannot be disabled, and removing protection is not a solution.",
+    },
+    domain: 2, task: "2.4", topic: "Bastion and Session Manager"
+  },
+  {
+    q: "Which combination best protects a public web application against both volumetric attacks and application-layer exploits?",
+    choices: [
+      "AWS Shield with AWS WAF",
+      "Amazon Inspector with AWS Config",
+      "AWS KMS with AWS Secrets Manager",
+      "Amazon Macie with Amazon Detective",
+    ],
+    answer: 0,
+    explain: "Shield absorbs the flood of traffic at the network and transport layers, and WAF inspects individual HTTP requests for malicious content. They address different layers.",
+    why_others_are_not_correct: {
+      1: "Those are vulnerability scanning and configuration tracking tools.",
+      2: "Those manage keys and secrets.",
+      3: "Those find sensitive data and investigate findings.",
+    },
+    domain: 2, task: "2.4", topic: "DDoS protection"
+  },
+  {
+    q: "How can a company ensure that every new Amazon EBS volume in a Region is encrypted?",
+    choices: [
+      "Enable EBS encryption by default for the account in that Region",
+      "Encrypt each volume manually after creation",
+      "Store volumes in Amazon S3",
+      "Use a larger volume type",
+    ],
+    answer: 0,
+    explain: "EBS encryption by default is an account and Region setting, so every new volume and snapshot is encrypted without anyone remembering to tick a box.",
+    why_others_are_not_correct: {
+      1: "An existing volume cannot be encrypted in place, and manual steps get missed.",
+      2: "EBS volumes are not stored as S3 objects by the customer.",
+      3: "Volume size has nothing to do with encryption.",
+    },
+    domain: 2, task: "2.4", topic: "Encryption at rest"
+  },
+  {
     q: "In the context of AWS networking, what characteristic best describes a Network ACL (Access Control List)?",
     choices: [
       "Instance-level stateful firewall",
@@ -772,6 +1180,40 @@ window.quizBanks.domain2 = [
     domain: 2, task: "2.4", topic: "Network ACLs"
   },
   {
+    q: "What is the current AWS position on customers performing penetration testing against their own resources?",
+    choices: [
+      "Permitted for a defined list of services without prior approval, subject to AWS policy",
+      "Never permitted under any circumstances",
+      "Permitted only with a signed contract and 90 days' notice",
+      "Permitted against any AWS customer's resources",
+    ],
+    answer: 0,
+    explain: "AWS allows customers to test their own workloads on an approved list of services without requesting permission first, provided the testing follows the published policy.",
+    why_others_are_not_correct: {
+      1: "Testing your own resources is explicitly allowed within the policy.",
+      2: "Prior approval is no longer required for the listed services.",
+      3: "Testing other customers' resources is never permitted and would be an abuse report.",
+    },
+    domain: 2, task: "2.4", topic: "Penetration testing"
+  },
+  {
+    q: "Which Amazon S3 feature protects objects from being permanently deleted or overwritten by accident?",
+    choices: [
+      "Versioning",
+      "Block Public Access",
+      "Transfer Acceleration",
+      "Requester Pays",
+    ],
+    answer: 0,
+    explain: "With versioning on, an overwrite creates a new version and a delete adds a marker, so the previous object can still be recovered.",
+    why_others_are_not_correct: {
+      1: "Block Public Access prevents exposure, not accidental deletion.",
+      2: "Transfer Acceleration speeds uploads.",
+      3: "Requester Pays shifts data transfer charges to the requester.",
+    },
+    domain: 2, task: "2.4", topic: "S3 security features"
+  },
+  {
     q: "Which practice would MOST improve the security of an S3 bucket that currently allows public read access it does not need?",
     choices: [
       "Enable S3 Block Public Access and grant access through a bucket policy or IAM instead",
@@ -787,6 +1229,23 @@ window.quizBanks.domain2 = [
       3: "Storage class affects cost and retrieval time only.",
     },
     domain: 2, task: "2.4", topic: "Security best practices"
+  },
+  {
+    q: "What does a newly created security group allow by default?",
+    choices: [
+      "No inbound traffic and all outbound traffic",
+      "All inbound and all outbound traffic",
+      "All inbound and no outbound traffic",
+      "No inbound and no outbound traffic",
+    ],
+    answer: 0,
+    explain: "Security groups start closed to the world and open to the internet for outbound. You add inbound rules for exactly the traffic you intend to accept.",
+    why_others_are_not_correct: {
+      1: "Allowing all inbound by default would be unsafe and is not how AWS configures it.",
+      2: "Outbound is permitted by default.",
+      3: "Outbound traffic is allowed, which is why instances can reach update servers.",
+    },
+    domain: 2, task: "2.4", topic: "Security group defaults"
   },
   {
     q: "What type of firewall acts at the instance level in a VPC?",

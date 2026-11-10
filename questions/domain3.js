@@ -1,9 +1,26 @@
 /* CLF-C02 Domain 3: Cloud Technology and Services (34% of the exam)
-   77 questions covering task statements 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8
+   87 questions covering task statements 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8
    Format matches the original class bank, so new questions can be
    appended by hand in exactly the same shape. */
 window.quizBanks = window.quizBanks || {};
 window.quizBanks.domain3 = [
+  {
+    q: "Which option lets developers define AWS infrastructure using a general-purpose programming language such as Python or TypeScript?",
+    choices: [
+      "AWS Cloud Development Kit",
+      "AWS CloudFormation templates in YAML only",
+      "The AWS Management Console",
+      "AWS Config rules",
+    ],
+    answer: 0,
+    explain: "The CDK lets you write infrastructure in a familiar language and synthesizes CloudFormation templates from it, which suits teams that prefer code to YAML.",
+    why_others_are_not_correct: {
+      1: "CloudFormation uses YAML or JSON templates rather than a programming language.",
+      2: "The console is a manual web interface.",
+      3: "Config rules evaluate compliance.",
+    },
+    domain: 3, task: "3.1", topic: "AWS CDK"
+  },
   {
     q: "Which service gives you a browser-based command line, already authenticated to your AWS account, with no local installation?",
     choices: [
@@ -88,6 +105,23 @@ window.quizBanks.domain3 = [
       3: "Trusted Advisor makes recommendations.",
     },
     domain: 3, task: "3.1", topic: "Infrastructure as code"
+  },
+  {
+    q: "What is the main trade-off when choosing a managed AWS service over running the same software yourself on EC2?",
+    choices: [
+      "You give up some configuration control in exchange for AWS handling operations",
+      "Managed services cannot be used in production",
+      "Managed services offer no security features",
+      "Managed services require a Business Support plan",
+    ],
+    answer: 0,
+    explain: "Managed services remove operational work but constrain what you can tune. If you need an unsupported engine version or an unusual configuration, EC2 gives you that freedom and the maintenance that comes with it.",
+    why_others_are_not_correct: {
+      1: "Managed services are widely used in production.",
+      2: "Managed services include extensive security capabilities.",
+      3: "No support plan is required to use them.",
+    },
+    domain: 3, task: "3.1", topic: "Managed vs unmanaged"
   },
   {
     q: "A team must build an identical test environment many times a week. Which approach is MOST appropriate?",
@@ -227,6 +261,23 @@ window.quizBanks.domain3 = [
     domain: 3, task: "3.2", topic: "Global infrastructure"
   },
   {
+    q: "Which AWS service is global rather than tied to a single Region?",
+    choices: [
+      "Amazon Route 53",
+      "Amazon EC2",
+      "Amazon RDS",
+      "Amazon EBS",
+    ],
+    answer: 0,
+    explain: "Route 53, IAM, CloudFront, and a few others operate globally. Most compute, storage, and database services are Region-scoped.",
+    why_others_are_not_correct: {
+      1: "EC2 instances exist in a specific Availability Zone within a Region.",
+      2: "RDS instances are Region-scoped.",
+      3: "EBS volumes are tied to one Availability Zone.",
+    },
+    domain: 3, task: "3.2", topic: "Global vs regional services"
+  },
+  {
     q: "An organization needs to deploy workloads in multiple countries while maintaining low latency. Which AWS capability best supports this?",
     choices: [
       "Elastic Load Balancing",
@@ -259,6 +310,23 @@ window.quizBanks.domain3 = [
       3: "Global reach comes from using multiple Regions or edge locations.",
     },
     domain: 3, task: "3.2", topic: "Regions and Availability Zones"
+  },
+  {
+    q: "A team cannot find a particular AWS service in the Region they are using. What is the MOST likely explanation?",
+    choices: [
+      "Not every AWS service is available in every Region",
+      "The service was deleted from their account",
+      "Their support plan does not include it",
+      "The service only works in Availability Zone A",
+    ],
+    answer: 0,
+    explain: "New services typically launch in a subset of Regions and expand over time, so Region selection has to account for which services you need.",
+    why_others_are_not_correct: {
+      1: "Services are not deleted from accounts.",
+      2: "Support plans affect help, not service availability.",
+      3: "Services are not restricted to a single Availability Zone in that way.",
+    },
+    domain: 3, task: "3.2", topic: "Service availability by Region"
   },
   {
     q: "Which AWS compute service allows you to run containers without managing servers?",
@@ -517,6 +585,23 @@ window.quizBanks.domain3 = [
     domain: 3, task: "3.4", topic: "Amazon DynamoDB"
   },
   {
+    q: "Which AWS service is a managed graph database suited to highly connected data such as social networks or fraud rings?",
+    choices: [
+      "Amazon Neptune",
+      "Amazon DocumentDB",
+      "Amazon DynamoDB",
+      "Amazon Redshift",
+    ],
+    answer: 0,
+    explain: "Neptune is purpose-built for graph workloads where the relationships between items are the thing you query.",
+    why_others_are_not_correct: {
+      1: "DocumentDB is a managed document database compatible with MongoDB.",
+      2: "DynamoDB is key-value and document, not graph.",
+      3: "Redshift is a columnar data warehouse.",
+    },
+    domain: 3, task: "3.4", topic: "Amazon Neptune and DocumentDB"
+  },
+  {
     q: "A company needs a managed relational database that supports MySQL and handles backups and patching. Which service fits?",
     choices: [
       "Amazon RDS",
@@ -551,6 +636,23 @@ window.quizBanks.domain3 = [
     domain: 3, task: "3.4", topic: "Amazon Redshift"
   },
   {
+    q: "An application needs to store user session data with very fast reads and automatic expiry. Which service suits it best?",
+    choices: [
+      "Amazon DynamoDB with a time-to-live attribute",
+      "Amazon Redshift",
+      "Amazon S3 Glacier",
+      "Amazon RDS for Oracle",
+    ],
+    answer: 0,
+    explain: "DynamoDB gives consistent low-latency key lookups, and its time-to-live feature deletes expired items automatically, which is exactly the session store pattern.",
+    why_others_are_not_correct: {
+      1: "Redshift is for analytical queries over large datasets.",
+      2: "Glacier is archival storage with slow retrieval.",
+      3: "A relational database is heavier than needed and has no built-in item expiry.",
+    },
+    domain: 3, task: "3.4", topic: "Database selection"
+  },
+  {
     q: "Which service provides an in-memory cache to reduce database load and speed up read-heavy applications?",
     choices: [
       "Amazon ElastiCache",
@@ -566,6 +668,23 @@ window.quizBanks.domain3 = [
       3: "S3 Glacier is archival storage and is deliberately slow.",
     },
     domain: 3, task: "3.4", topic: "In-memory databases"
+  },
+  {
+    q: "An Amazon RDS database is struggling under heavy read traffic from reporting queries. Which option addresses this?",
+    choices: [
+      "Add read replicas",
+      "Enable Multi-AZ deployment",
+      "Move the database to Amazon S3",
+      "Reduce the backup retention period",
+    ],
+    answer: 0,
+    explain: "Read replicas take read traffic off the primary instance. Multi-AZ solves a different problem: it provides a standby for failover, not extra read capacity.",
+    why_others_are_not_correct: {
+      1: "The Multi-AZ standby is for availability and does not serve read traffic.",
+      2: "S3 is object storage and cannot run queries like a relational database.",
+      3: "Backup retention does not affect query performance.",
+    },
+    domain: 3, task: "3.4", topic: "Multi-AZ vs read replicas"
   },
   {
     q: "What advantage does using AWS Direct Connect provide compared to an internet-based VPN for connecting on-premises to AWS?",
@@ -1045,6 +1164,23 @@ window.quizBanks.domain3 = [
     domain: 3, task: "3.7", topic: "Amazon Athena"
   },
   {
+    q: "Which service uses natural language processing to find sentiment, key phrases, and entities in text?",
+    choices: [
+      "Amazon Comprehend",
+      "Amazon Kendra",
+      "Amazon Lex",
+      "Amazon Polly",
+    ],
+    answer: 0,
+    explain: "Comprehend reads text you supply, such as product reviews or support tickets, and extracts meaning including sentiment and named entities.",
+    why_others_are_not_correct: {
+      1: "Kendra is an intelligent search service over your documents.",
+      2: "Lex builds conversational chatbots.",
+      3: "Polly turns text into speech.",
+    },
+    domain: 3, task: "3.7", topic: "Amazon Comprehend"
+  },
+  {
     q: "A company wants employees to search internal documents using natural language questions. Which service fits?",
     choices: [
       "Amazon Kendra",
@@ -1113,6 +1249,23 @@ window.quizBanks.domain3 = [
     domain: 3, task: "3.7", topic: "Amazon QuickSight"
   },
   {
+    q: "Which service analyzes images and video to detect objects, faces, text, and unsafe content?",
+    choices: [
+      "Amazon Rekognition",
+      "Amazon Textract",
+      "Amazon Polly",
+      "Amazon Translate",
+    ],
+    answer: 0,
+    explain: "Rekognition is the ready-made computer vision service. You call an API and get labels back without training a model.",
+    why_others_are_not_correct: {
+      1: "Textract extracts text and data specifically from scanned documents.",
+      2: "Polly converts text to speech.",
+      3: "Translate converts text between languages.",
+    },
+    domain: 3, task: "3.7", topic: "Amazon Rekognition"
+  },
+  {
     q: "Which service lets data scientists build, train, and deploy machine learning models at scale?",
     choices: [
       "Amazon SageMaker",
@@ -1128,6 +1281,23 @@ window.quizBanks.domain3 = [
       3: "Athena queries data in S3 with SQL.",
     },
     domain: 3, task: "3.7", topic: "Amazon SageMaker"
+  },
+  {
+    q: "A company needs to pull form fields and tables out of scanned invoices automatically. Which service fits?",
+    choices: [
+      "Amazon Textract",
+      "Amazon Rekognition",
+      "Amazon Comprehend",
+      "Amazon Transcribe",
+    ],
+    answer: 0,
+    explain: "Textract goes beyond simple optical character recognition and understands document structure, returning form key-value pairs and table cells.",
+    why_others_are_not_correct: {
+      1: "Rekognition analyzes general images and video rather than document structure.",
+      2: "Comprehend analyzes the meaning of text it is given.",
+      3: "Transcribe converts audio to text.",
+    },
+    domain: 3, task: "3.7", topic: "Amazon Textract"
   },
   {
     q: "Which service helps developers build and host full-stack web and mobile applications quickly?",

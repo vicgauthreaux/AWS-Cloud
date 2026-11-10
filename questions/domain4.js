@@ -1,5 +1,5 @@
 /* CLF-C02 Domain 4: Billing, Pricing, and Support (12% of the exam)
-   27 questions covering task statements 4.1, 4.2, 4.3
+   33 questions covering task statements 4.1, 4.2, 4.3
    Format matches the original class bank, so new questions can be
    appended by hand in exactly the same shape. */
 window.quizBanks = window.quizBanks || {};
@@ -227,6 +227,40 @@ window.quizBanks.domain4 = [
     domain: 4, task: "4.2", topic: "AWS Budgets"
   },
   {
+    q: "Which service analyzes utilization metrics and recommends optimal EC2 instance types, EBS volumes, and Lambda memory settings?",
+    choices: [
+      "AWS Compute Optimizer",
+      "AWS Budgets",
+      "AWS Config",
+      "Amazon CloudWatch",
+    ],
+    answer: 0,
+    explain: "Compute Optimizer uses machine learning on your actual usage to recommend better-fitting resources, with the projected performance and cost impact.",
+    why_others_are_not_correct: {
+      1: "Budgets alerts on spending thresholds.",
+      2: "Config tracks configuration compliance.",
+      3: "CloudWatch supplies the metrics but does not make sizing recommendations.",
+    },
+    domain: 4, task: "4.2", topic: "AWS Compute Optimizer"
+  },
+  {
+    q: "Which AWS feature uses machine learning to spot unusual spending and alert you automatically?",
+    choices: [
+      "AWS Cost Anomaly Detection",
+      "AWS Pricing Calculator",
+      "AWS Artifact",
+      "AWS Compute Optimizer",
+    ],
+    answer: 0,
+    explain: "Cost Anomaly Detection learns your normal spending pattern and flags deviations, which catches a runaway resource before it reaches the monthly invoice.",
+    why_others_are_not_correct: {
+      1: "The Pricing Calculator estimates costs before you build.",
+      2: "Artifact provides compliance reports.",
+      3: "Compute Optimizer recommends resource sizes based on utilization.",
+    },
+    domain: 4, task: "4.2", topic: "AWS Cost Anomaly Detection"
+  },
+  {
     q: "A finance team wants to see which services drove last quarter's AWS spend and spot trends. Which tool fits?",
     choices: [
       "AWS Cost Explorer",
@@ -295,6 +329,23 @@ window.quizBanks.domain4 = [
     domain: 4, task: "4.2", topic: "Consolidated billing"
   },
   {
+    q: "In an AWS Organization using consolidated billing, which account pays the combined bill?",
+    choices: [
+      "The management account",
+      "Each member account pays its own share directly",
+      "The account with the highest usage",
+      "AWS selects an account at random each month",
+    ],
+    answer: 0,
+    explain: "The management account, formerly called the payer account, receives and settles the consolidated invoice for every member account.",
+    why_others_are_not_correct: {
+      1: "Member accounts do not receive separate invoices under consolidated billing.",
+      2: "Usage volume does not determine who pays.",
+      3: "The payer is fixed, not randomly assigned.",
+    },
+    domain: 4, task: "4.2", topic: "Consolidated billing"
+  },
+  {
     q: "How can a company attribute AWS costs to individual departments?",
     choices: [
       "Apply cost allocation tags to resources and report on them",
@@ -310,6 +361,40 @@ window.quizBanks.domain4 = [
       3: "Instance IDs do not describe who owns a resource.",
     },
     domain: 4, task: "4.2", topic: "Cost allocation tags"
+  },
+  {
+    q: "Which AWS billing artifact provides the most granular, line-item detail about usage and charges?",
+    choices: [
+      "The AWS Cost and Usage Report",
+      "The Billing dashboard summary",
+      "AWS Cost Explorer charts",
+      "The AWS Pricing Calculator estimate",
+    ],
+    answer: 0,
+    explain: "The Cost and Usage Report is the raw data, delivered to S3, down to individual resource and hour. Teams load it into analytics tools for detailed chargeback.",
+    why_others_are_not_correct: {
+      1: "The dashboard is a high-level summary.",
+      2: "Cost Explorer visualizes aggregated data rather than raw line items.",
+      3: "The Pricing Calculator produces forward-looking estimates.",
+    },
+    domain: 4, task: "4.2", topic: "Cost and Usage Report"
+  },
+  {
+    q: "What happens to an unused Reserved Instance discount in an AWS Organization with consolidated billing and sharing enabled?",
+    choices: [
+      "It can apply to matching usage in other accounts in the organization",
+      "It is lost at the end of each hour",
+      "It is refunded as account credit",
+      "It transfers to the next billing month",
+    ],
+    answer: 0,
+    explain: "Reserved Instance and Savings Plans benefits are shared across the organization by default, so one account's unused reservation offsets another account's matching usage.",
+    why_others_are_not_correct: {
+      1: "The benefit is shared rather than simply lost.",
+      2: "AWS does not refund unused reservation hours as credit.",
+      3: "Hourly reservation benefits do not roll forward.",
+    },
+    domain: 4, task: "4.2", topic: "Reserved Instance sharing"
   },
   {
     q: "What does AWS Marketplace offer?",
@@ -430,6 +515,23 @@ window.quizBanks.domain4 = [
       4: "A designated Technical Account Manager is an Enterprise Support feature.",
     },
     domain: 4, task: "4.3", topic: "AWS Support plans"
+  },
+  {
+    q: "Which factor determines the response time a customer can expect from AWS Support?",
+    choices: [
+      "The support plan and the severity of the case",
+      "The AWS Region the resources run in",
+      "The customer's monthly spend alone",
+      "The number of IAM users in the account",
+    ],
+    answer: 0,
+    explain: "Each support plan publishes target response times by case severity, from general guidance down to business-critical outages on the higher tiers.",
+    why_others_are_not_correct: {
+      1: "Region does not affect support responsiveness.",
+      2: "Spend does not by itself set response targets; the plan does.",
+      3: "Account size has no bearing on support.",
+    },
+    domain: 4, task: "4.3", topic: "AWS Support response times"
   },
   {
     q: "Who should you contact to report suspected abuse of AWS resources, such as a system sending spam?",

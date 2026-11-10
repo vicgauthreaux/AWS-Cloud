@@ -1,5 +1,5 @@
 /* CLF-C02 Domain 1: Cloud Concepts (24% of the exam)
-   37 questions covering task statements 1.1, 1.2, 1.3, 1.4
+   60 questions covering task statements 1.1, 1.2, 1.3, 1.4
    Format matches the original class bank, so new questions can be
    appended by hand in exactly the same shape. */
 window.quizBanks = window.quizBanks || {};
@@ -39,6 +39,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.1", topic: "Agility"
   },
   {
+    q: "What is the difference between availability and durability?",
+    choices: [
+      "Availability is whether you can reach the data right now; durability is whether the data still exists",
+      "Availability is whether the data still exists; durability is whether you can reach it",
+      "They mean the same thing",
+      "Availability applies to storage and durability applies to compute",
+    ],
+    answer: 0,
+    explain: "A service can be temporarily unreachable without any data being lost. S3 Standard, for example, is designed for eleven nines of durability and a lower availability figure.",
+    why_others_are_not_correct: {
+      1: "This reverses the two terms.",
+      2: "They measure different properties and are quoted separately.",
+      3: "Both are storage concepts; compute uses different measures.",
+    },
+    domain: 1, task: "1.1", topic: "Availability vs durability"
+  },
+  {
     q: "A company wants to increase revenue and reduce risk by migrating to AWS. Which AWS resource helps them plan this migration?",
     choices: [
       "AWS Trusted Advisor",
@@ -71,6 +88,23 @@ window.quizBanks.domain1 = [
       3: "Distributed cloud isn't an AWS deployment term.",
     },
     domain: 1, task: "1.1", topic: "Deployment models"
+  },
+  {
+    q: "Which cloud advantage describes AWS passing lower infrastructure costs on to customers as its customer base grows?",
+    choices: [
+      "Benefit from massive economies of scale",
+      "Stop guessing capacity",
+      "Go global in minutes",
+      "Increase speed and agility",
+    ],
+    answer: 0,
+    explain: "Because AWS aggregates usage from hundreds of thousands of customers, it achieves higher purchasing power than any single organization and has lowered prices many times.",
+    why_others_are_not_correct: {
+      1: "Stop guessing capacity is about scaling to demand rather than over-provisioning hardware.",
+      2: "Go global in minutes is about deploying to new Regions quickly.",
+      3: "Increase speed and agility is about how fast new resources become available.",
+    },
+    domain: 1, task: "1.1", topic: "Economies of scale"
   },
   {
     q: "Which scenario best demonstrates cloud elasticity?",
@@ -141,6 +175,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.1", topic: "Global reach"
   },
   {
+    q: "Which design choice MOST improves the availability of a web application running on AWS?",
+    choices: [
+      "Running instances in at least two Availability Zones behind a load balancer",
+      "Running one very large instance instead of several small ones",
+      "Storing all data on the instance's local disk",
+      "Disabling health checks to avoid unnecessary restarts",
+    ],
+    answer: 0,
+    explain: "Spreading across Availability Zones removes the single point of failure, and the load balancer stops sending traffic to any instance that fails its health check.",
+    why_others_are_not_correct: {
+      1: "One large instance is still one point of failure.",
+      2: "Local instance storage is lost when the instance stops and ties data to one host.",
+      3: "Health checks are what let the system route around failure.",
+    },
+    domain: 1, task: "1.1", topic: "High availability"
+  },
+  {
     q: "A company uses Amazon RDS instead of managing its own database servers. Which AWS benefit does this demonstrate?",
     choices: [
       "Increased manual administration",
@@ -156,6 +207,23 @@ window.quizBanks.domain1 = [
       3: "Managed services enhance scalability.",
     },
     domain: 1, task: "1.1", topic: "Managed services"
+  },
+  {
+    q: "Which statement best distinguishes scalability from elasticity?",
+    choices: [
+      "Scalability is the ability to grow; elasticity is growing and shrinking automatically with demand",
+      "Scalability is automatic; elasticity requires manual action",
+      "They are different words for the same capability",
+      "Scalability applies to storage only; elasticity applies to compute only",
+    ],
+    answer: 0,
+    explain: "A system is scalable if it can handle more load when you add resources. It is elastic if it adds and removes those resources on its own as demand rises and falls.",
+    why_others_are_not_correct: {
+      1: "This reverses them; elasticity is the automatic one.",
+      2: "Elasticity is a specific form of scaling that works in both directions automatically.",
+      3: "Both concepts apply across resource types.",
+    },
+    domain: 1, task: "1.1", topic: "Scalability vs elasticity"
   },
   {
     q: "Which of the following best describes one of the six key advantages of cloud computing?",
@@ -193,6 +261,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.1", topic: "Six advantages of the cloud"
   },
   {
+    q: "A retailer used to buy servers sized for Black Friday and leave them idle the rest of the year. Which cloud advantage solves this?",
+    choices: [
+      "Stop guessing capacity",
+      "Benefit from massive economies of scale",
+      "Stop spending money running and maintaining data centers",
+      "Go global in minutes",
+    ],
+    answer: 0,
+    explain: "In the cloud you scale up for the peak and back down afterward, so you pay for the capacity you actually use instead of buying for the worst case.",
+    why_others_are_not_correct: {
+      1: "Economies of scale is about AWS's purchasing power lowering unit prices.",
+      2: "That advantage is about not operating facilities at all.",
+      3: "That advantage is about geographic reach, not capacity sizing.",
+    },
+    domain: 1, task: "1.1", topic: "Stop guessing capacity"
+  },
+  {
     q: "Which AWS tool helps ensure architectures align with best practices for operational excellence, reliability, and cost optimization?",
     choices: [
       "AWS Well-Architected Tool",
@@ -225,6 +310,23 @@ window.quizBanks.domain1 = [
       3: "That is Amazon CloudWatch.",
     },
     domain: 1, task: "1.2", topic: "AWS Well-Architected Tool"
+  },
+  {
+    q: "A review finds several oversized EC2 instances running at 5 percent CPU. Which Well-Architected pillar does this finding belong to?",
+    choices: [
+      "Cost optimization",
+      "Security",
+      "Reliability",
+      "Operational excellence",
+    ],
+    answer: 0,
+    explain: "Paying for capacity you are not using is the textbook cost optimization finding, usually resolved by rightsizing or moving to a different purchase option.",
+    why_others_are_not_correct: {
+      1: "Security concerns protection of data and systems.",
+      2: "Reliability concerns recovery and meeting demand.",
+      3: "Operational excellence concerns processes and monitoring.",
+    },
+    domain: 1, task: "1.2", topic: "Cost optimization pillar"
   },
   {
     q: "Which AWS design principle emphasizes reducing human error through automation?",
@@ -261,6 +363,57 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.2", topic: "Design principles"
   },
   {
+    q: "Which practice reflects the AWS design principle of automating to make architectural experimentation easier?",
+    choices: [
+      "Using templates to create and destroy test environments on demand",
+      "Keeping one long-lived environment that everyone shares",
+      "Making all changes by hand so they can be reviewed",
+      "Avoiding changes once a system is in production",
+    ],
+    answer: 0,
+    explain: "If creating an environment is a scripted, repeatable action, trying an idea costs very little and you can throw the result away.",
+    why_others_are_not_correct: {
+      1: "A single shared environment limits experimentation and creates contention.",
+      2: "Manual changes are slow and error-prone, which discourages experimentation.",
+      3: "Avoiding change entirely prevents improvement.",
+    },
+    domain: 1, task: "1.2", topic: "Design principles"
+  },
+  {
+    q: "Which pair of terms describes how much data a business can afford to lose and how quickly it must be back online?",
+    choices: [
+      "Recovery point objective and recovery time objective",
+      "Service level agreement and service level objective",
+      "Mean time between failures and mean time to repair",
+      "Availability zone and Region",
+    ],
+    answer: 0,
+    explain: "RPO is the acceptable amount of data loss measured in time, and RTO is the acceptable length of the outage. Together they drive the disaster recovery design you choose.",
+    why_others_are_not_correct: {
+      1: "SLAs and SLOs are commitments and targets, not recovery measures.",
+      2: "Those are hardware reliability metrics.",
+      3: "Those are infrastructure locations.",
+    },
+    domain: 1, task: "1.2", topic: "Disaster recovery"
+  },
+  {
+    q: "What does fault tolerance mean for a workload?",
+    choices: [
+      "The workload keeps operating correctly even when a component fails",
+      "The workload never experiences any component failure",
+      "Failures are logged for later review",
+      "The workload runs on the fastest available hardware",
+    ],
+    answer: 0,
+    explain: "Fault tolerance is built in by assuming components will fail and designing so that one failing does not stop the system, usually through redundancy.",
+    why_others_are_not_correct: {
+      1: "No design prevents all failure; the point is surviving it.",
+      2: "Logging records failure but does not keep the system running.",
+      3: "Hardware speed is a performance concern, not fault tolerance.",
+    },
+    domain: 1, task: "1.2", topic: "Fault tolerance"
+  },
+  {
     q: "Why is loose coupling recommended when designing cloud architectures?",
     choices: [
       "A failure in one component is less likely to take down the whole application",
@@ -276,6 +429,40 @@ window.quizBanks.domain1 = [
       3: "Cost depends on the design; loose coupling is about resilience.",
     },
     domain: 1, task: "1.2", topic: "Loose coupling"
+  },
+  {
+    q: "Which Well-Architected pillar covers running workloads effectively, monitoring them, and continuously improving procedures?",
+    choices: [
+      "Operational excellence",
+      "Reliability",
+      "Performance efficiency",
+      "Cost optimization",
+    ],
+    answer: 0,
+    explain: "Operational excellence is about how you run and evolve the system day to day: automating changes, responding to events, and refining runbooks.",
+    why_others_are_not_correct: {
+      1: "Reliability is about recovering from failure and meeting demand.",
+      2: "Performance efficiency is about using resources well as requirements change.",
+      3: "Cost optimization is about avoiding unnecessary spend.",
+    },
+    domain: 1, task: "1.2", topic: "Operational excellence pillar"
+  },
+  {
+    q: "Which Well-Architected pillar is concerned with using computing resources efficiently and maintaining that efficiency as demand and technology change?",
+    choices: [
+      "Performance efficiency",
+      "Operational excellence",
+      "Sustainability",
+      "Reliability",
+    ],
+    answer: 0,
+    explain: "Performance efficiency asks whether you are using the right resource types and sizes, and whether you re-evaluate as AWS releases new options.",
+    why_others_are_not_correct: {
+      1: "Operational excellence covers processes and monitoring.",
+      2: "Sustainability covers environmental impact, though it overlaps.",
+      3: "Reliability covers failure recovery.",
+    },
+    domain: 1, task: "1.2", topic: "Performance efficiency pillar"
   },
   {
     q: "Which pillar of the AWS Well-Architected Framework focuses on using computing resources efficiently to meet system requirements?",
@@ -380,6 +567,40 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.3", topic: "AWS Cloud Adoption Framework"
   },
   {
+    q: "Which service automates and accelerates moving large amounts of file data between on-premises storage and AWS over the network?",
+    choices: [
+      "AWS DataSync",
+      "AWS Snowball",
+      "AWS Backup",
+      "Amazon S3 Glacier",
+    ],
+    answer: 0,
+    explain: "DataSync handles scheduled, automated network transfers of file and object data, taking care of encryption, verification, and retries.",
+    why_others_are_not_correct: {
+      1: "Snowball is physical shipment rather than network transfer.",
+      2: "AWS Backup protects AWS resources rather than migrating on-premises data.",
+      3: "Glacier is an archival storage class.",
+    },
+    domain: 1, task: "1.3", topic: "AWS DataSync"
+  },
+  {
+    q: "Which AWS service family physically ships storage devices to a customer site for transferring large data sets into AWS?",
+    choices: [
+      "AWS Snow Family",
+      "AWS DataSync",
+      "AWS Direct Connect",
+      "Amazon S3 Transfer Acceleration",
+    ],
+    answer: 0,
+    explain: "The Snow Family, including Snowball Edge, ships ruggedized devices you load locally and return to AWS, which is faster than the network for very large transfers.",
+    why_others_are_not_correct: {
+      1: "DataSync transfers over the network, not by shipping devices.",
+      2: "Direct Connect is a dedicated network link.",
+      3: "Transfer Acceleration speeds internet uploads to S3.",
+    },
+    domain: 1, task: "1.3", topic: "AWS Snow Family"
+  },
+  {
     q: "A company has an on-premises data center and wants to gradually migrate an application to AWS, but keep full control of the operating system, runtime, and application code. Which AWS compute model fits best for the initial lift-and-shift phase?",
     choices: [
       "Serverless functions (Lambda)",
@@ -414,6 +635,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.3", topic: "Hybrid cloud"
   },
   {
+    q: "A company in a phased migration needs a private, consistent-bandwidth connection between its data center and AWS. Which service provides it?",
+    choices: [
+      "AWS Direct Connect",
+      "AWS Site-to-Site VPN over the internet",
+      "Amazon CloudFront",
+      "AWS Snowball",
+    ],
+    answer: 0,
+    explain: "Direct Connect is a dedicated physical link. It delivers more consistent throughput and latency than a VPN tunnel over the public internet, which matters for steady hybrid traffic.",
+    why_others_are_not_correct: {
+      1: "A VPN works but rides the public internet, so performance varies.",
+      2: "CloudFront caches content for end users.",
+      3: "Snowball is one-off physical data transfer.",
+    },
+    domain: 1, task: "1.3", topic: "Hybrid connectivity"
+  },
+  {
     q: "An organization plans to migrate to AWS to reduce business risk and improve efficiency. Which AWS resource provides strategic guidance for this transition?",
     choices: [
       "AWS Migration Hub",
@@ -427,6 +665,23 @@ window.quizBanks.domain1 = [
       0: "Migration Hub tracks migration progress but doesn't provide strategic planning.",
       2: "CloudFormation automates resource deployment, not migration strategy.",
       3: "CodePipeline manages CI/CD workflows, not migration planning.",
+    },
+    domain: 1, task: "1.3", topic: "Migration benefits"
+  },
+  {
+    q: "Which is a business benefit a company would typically expect from migrating to AWS?",
+    choices: [
+      "Shifting IT spend from capital expenditure to operating expenditure",
+      "Eliminating the need for any IT staff",
+      "Removing all security responsibilities",
+      "Guaranteeing that costs always decrease",
+    ],
+    answer: 0,
+    explain: "Buying capacity as a service converts large upfront hardware purchases into ongoing operating costs that track actual usage.",
+    why_others_are_not_correct: {
+      1: "Staff are still needed; their work shifts toward higher-value activities.",
+      2: "Customers always retain responsibility for security in the cloud.",
+      3: "Poorly managed cloud spend can exceed on-premises cost.",
     },
     domain: 1, task: "1.3", topic: "Migration benefits"
   },
@@ -482,6 +737,40 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.3", topic: "Migration strategies"
   },
   {
+    q: "A company rewrites a monolithic application into microservices running on AWS Lambda during its migration. Which strategy is this?",
+    choices: [
+      "Refactoring",
+      "Rehosting",
+      "Replatforming",
+      "Repurchasing",
+    ],
+    answer: 0,
+    explain: "Refactoring, sometimes called rearchitecting, means changing how the application is built to take advantage of cloud-native capabilities. It costs the most effort and usually returns the most benefit.",
+    why_others_are_not_correct: {
+      1: "Rehosting moves the application unchanged.",
+      2: "Replatforming makes targeted optimizations without rearchitecting.",
+      3: "Repurchasing means switching to a different product entirely.",
+    },
+    domain: 1, task: "1.3", topic: "Migration strategies"
+  },
+  {
+    q: "During migration planning, a company identifies several applications nobody uses any more. Which strategy applies?",
+    choices: [
+      "Retiring",
+      "Retaining",
+      "Rehosting",
+      "Replatforming",
+    ],
+    answer: 0,
+    explain: "Retiring means turning the application off instead of moving it. Migration projects routinely find a meaningful share of the estate is simply no longer needed.",
+    why_others_are_not_correct: {
+      1: "Retaining means deliberately leaving it in place for now.",
+      2: "Rehosting would move something that is not needed.",
+      3: "Replatforming would invest effort in something not needed.",
+    },
+    domain: 1, task: "1.3", topic: "Migration strategies"
+  },
+  {
     q: "Which AWS service can help a company automate infrastructure provisioning and management using templates?",
     choices: [
       "AWS CloudFormation",
@@ -512,6 +801,23 @@ window.quizBanks.domain1 = [
       1: "Instance prices are the same however they are created.",
       2: "Support plans are unrelated to automation.",
       3: "Resources are billed regardless of how they were provisioned.",
+    },
+    domain: 1, task: "1.4", topic: "Automation benefits"
+  },
+  {
+    q: "How does automating infrastructure help control cloud costs?",
+    choices: [
+      "Resources can be shut down outside business hours and recreated reliably",
+      "Automated resources are billed at a lower rate",
+      "Automation removes the need to monitor spending",
+      "Automated deployments qualify for Reserved Instance pricing",
+    ],
+    answer: 0,
+    explain: "Non-production environments often sit idle most of the week. Automation makes turning them off safe, because recreating them is a known, repeatable operation.",
+    why_others_are_not_correct: {
+      1: "The rate is the same however a resource is created.",
+      2: "Cost monitoring is still essential.",
+      3: "Reserved pricing is a purchase commitment, unrelated to deployment method.",
     },
     domain: 1, task: "1.4", topic: "Automation benefits"
   },
@@ -550,6 +856,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.4", topic: "Capital vs operating expense"
   },
   {
+    q: "What does it mean to trade capital expense for variable expense?",
+    choices: [
+      "Paying for resources as you consume them instead of buying hardware upfront",
+      "Paying a fixed annual fee instead of monthly",
+      "Buying hardware at a discount",
+      "Leasing equipment with a buyout at the end",
+    ],
+    answer: 0,
+    explain: "Instead of a large purchase before the first user arrives, you pay for what you consume, which moves the cost into the operating budget and ties it to actual demand.",
+    why_others_are_not_correct: {
+      1: "A fixed annual fee is not variable.",
+      2: "Discounted hardware is still a capital purchase.",
+      3: "A lease with buyout is still a commitment to hardware.",
+    },
+    domain: 1, task: "1.4", topic: "Capital vs operating expense"
+  },
+  {
     q: "Why can AWS generally offer lower prices than a company running its own data center?",
     choices: [
       "AWS aggregates usage from many customers and passes on economies of scale",
@@ -565,6 +888,40 @@ window.quizBanks.domain1 = [
       3: "Power, cooling, and staffing all cost money.",
     },
     domain: 1, task: "1.4", topic: "Economies of scale"
+  },
+  {
+    q: "A company holds existing Windows Server licenses with Software Assurance and wants to use them on AWS. Which approach applies?",
+    choices: [
+      "Bring Your Own License on a Dedicated Host",
+      "Buying a license-included instance",
+      "Using Spot Instances",
+      "Using a Savings Plan",
+    ],
+    answer: 0,
+    explain: "Licenses that are tied to physical hardware generally require Dedicated Hosts, which give the visibility into sockets and cores that this licensing model needs.",
+    why_others_are_not_correct: {
+      1: "A license-included instance means paying for the license again in the hourly rate.",
+      2: "Spot is a purchasing option and does not address licensing.",
+      3: "Savings Plans are a billing commitment, not a licensing mechanism.",
+    },
+    domain: 1, task: "1.4", topic: "Licensing"
+  },
+  {
+    q: "What is the main economic argument for choosing a managed service such as Amazon RDS over self-managing the same software on EC2?",
+    choices: [
+      "Staff time moves from routine maintenance to work that differentiates the business",
+      "Managed services are always cheaper per hour",
+      "Managed services remove the need for backups",
+      "Managed services do not count toward the monthly bill",
+    ],
+    answer: 0,
+    explain: "The per-hour rate for a managed service is often higher, but patching, backups, and failover stop consuming engineer time. The saving is in labor, not the sticker price.",
+    why_others_are_not_correct: {
+      1: "The hourly rate is frequently higher than a comparable EC2 instance.",
+      2: "Backups still happen; AWS simply runs them for you.",
+      3: "Managed services are billed like any other service.",
+    },
+    domain: 1, task: "1.4", topic: "Managed service value"
   },
   {
     q: "A startup runs tests on AWS without worrying about large upfront investments or hardware maintenance. Which AWS principle enables this?",
@@ -618,6 +975,23 @@ window.quizBanks.domain1 = [
     domain: 1, task: "1.4", topic: "Rightsizing"
   },
   {
+    q: "Which AWS tool would you use FIRST to identify instances that are candidates for rightsizing?",
+    choices: [
+      "AWS Cost Explorer rightsizing recommendations",
+      "AWS CloudFormation",
+      "AWS Artifact",
+      "Amazon Route 53",
+    ],
+    answer: 0,
+    explain: "Cost Explorer analyzes historical utilization and produces specific recommendations, such as moving to a smaller instance type, with the projected saving.",
+    why_others_are_not_correct: {
+      1: "CloudFormation provisions infrastructure; it does not analyze utilization.",
+      2: "Artifact provides compliance documents.",
+      3: "Route 53 is DNS.",
+    },
+    domain: 1, task: "1.4", topic: "Rightsizing"
+  },
+  {
     q: "A healthcare company is comparing costs of on-premises vs AWS cloud. Which economic benefit supports cost savings on AWS?",
     choices: [
       "Paying for idle servers",
@@ -631,6 +1005,23 @@ window.quizBanks.domain1 = [
       0: "AWS avoids paying for idle resources through pay-as-you-go pricing.",
       2: "AWS replaces fixed CAPEX with variable OPEX.",
       3: "Infrastructure management is largely automated in AWS.",
+    },
+    domain: 1, task: "1.4", topic: "Total cost of ownership"
+  },
+  {
+    q: "Which cost is typically included when calculating the total cost of ownership of an on-premises data center but disappears in the cloud?",
+    choices: [
+      "Power, cooling, and physical facility costs",
+      "Staff training",
+      "Application licensing",
+      "Help desk support",
+    ],
+    answer: 0,
+    explain: "Facility costs are the classic hidden expense. They are real but rarely appear on an IT budget line, which is why on-premises costs are often underestimated.",
+    why_others_are_not_correct: {
+      1: "Training is still required for cloud skills.",
+      2: "Software licensing still applies in the cloud.",
+      3: "Users still need support.",
     },
     domain: 1, task: "1.4", topic: "Total cost of ownership"
   },

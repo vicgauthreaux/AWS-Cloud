@@ -7,20 +7,21 @@ IST-2134 AWS Cloud Infrastructure at MGCCC.
 
 ## What's here
 
-189 questions organized by the four official CLF-C02 exam domains, covering
-all 19 task statements in the exam guide.
+255 questions organized by the four official CLF-C02 exam domains, weighted to
+match the real exam and covering all 19 task statements (minimum 9 questions each).
 
-| Domain | Weight on the exam | Questions here |
-|---|---|---|
-| 1. Cloud Concepts | 24% | 37 |
-| 2. Security and Compliance | 30% | 48 |
-| 3. Cloud Technology and Services | 34% | 77 |
-| 4. Billing, Pricing, and Support | 12% | 27 |
+| Domain | Weight on the exam | Questions here | Share |
+|---|---|---|---|
+| 1. Cloud Concepts | 24% | 60 | 24% |
+| 2. Security and Compliance | 30% | 75 | 29% |
+| 3. Cloud Technology and Services | 34% | 87 | 34% |
+| 4. Billing, Pricing, and Support | 12% | 33 | 13% |
 
 Of these, 60 come from the original in-class question sets (Modules 1, 5, and 6)
-and 129 were written to fill the gaps — security, storage, databases, AI/ML,
-analytics, application integration, developer tools, billing tools, and support
-plans — which the AWS Academy course material does not cover but the exam does.
+and 195 were written to fill the gaps — security and compliance, storage,
+databases, AI/ML, analytics, application integration, developer tools, billing
+tools, and support plans — which the AWS Academy course material does not cover
+but the exam does.
 
 Eight are multiple-response ("Choose TWO") items, since the real exam mixes
 those in.
@@ -28,9 +29,9 @@ those in.
 ## Practice modes
 
 - **Exam simulation** — 65 questions drawn at the real exam's domain weighting
-  (the full bank is heavier on networking than the exam is, so the simulation
-  samples per domain rather than straight from the pile).
-- **Every question** — all 189.
+  (16 / 20 / 22 / 7 across the four domains), the same length and mix as the
+  real thing.
+- **Every question** — all 255.
 - **One domain at a time** — useful when a score report says which domain is weak.
 
 Each question shows its domain, task statement, and topic. Answering reveals the
