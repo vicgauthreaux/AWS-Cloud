@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AWS Cloud Practitioner (CLF-C02) Practice Questions</title>
+<meta name="description" content="Practice questions for the AWS Certified Cloud Practitioner CLF-C02 exam, organized by exam domain." />
+<link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+
+<header class="site-head">
+  <h1>AWS Cloud Practitioner Practice</h1>
+  <p class="sub">Exam <strong>CLF-C02</strong> &middot; questions grouped by the four official exam domains</p>
+</header>
+
+<main class="quiz-card">
+
+  <!-- ============ start screen ============ -->
+  <section id="startScreen">
+    <h2 class="screen-title">Choose what to practice</h2>
+    <p class="hint">Each domain is weighted the same way it is on the real exam. Start anywhere; your answers are not saved or sent anywhere.</p>
+
+    <div class="mode-list" id="modeList"><!-- built by engine.js --></div>
+
+    <div class="start-foot">
+      <label class="toggle">
+        <input type="checkbox" id="shuffleToggle" checked />
+        <span>Shuffle questions and answer order</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ============ quiz screen ============ -->
+  <section id="quizScreen" hidden>
+    <div class="quiz-top">
+      <button class="link-btn" id="backBtn" type="button">&larr; Change set</button>
+      <div class="meta">
+        <span id="counter">Question 1 of 1</span>
+        <span class="dot">&middot;</span>
+        <span id="score">0 correct</span>
+      </div>
+    </div>
+
+    <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+
+    <div class="tags">
+      <span class="tag tag-domain" id="tagDomain"></span>
+      <span class="tag" id="tagTask"></span>
+      <span class="tag" id="tagTopic"></span>
+    </div>
+
+    <div id="quizBody">
+      <h2 class="question-text" id="qText"></h2>
+      <p class="multi-note" id="multiNote" hidden></p>
+      <div class="choices" id="qChoices" role="group" aria-label="Answer choices"></div>
+      <div class="explanation" id="qExplain" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="controls">
+      <button class="control-btn" id="prevBtn" type="button">Previous</button>
+      <button class="control-btn primary" id="nextBtn" type="button">Next</button>
+    </div>
+  </section>
+
+  <!-- ============ results screen ============ -->
+  <section id="resultScreen" hidden>
+    <h2 class="screen-title">Results</h2>
+    <p class="big-score"><span id="finalScore">0</span><span class="of">/<span id="finalTotal">0</span></span></p>
+    <p class="verdict" id="verdict"></p>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="controls">
+      <button class="control-btn" id="reviewBtn" type="button">Review the ones I missed</button>
+      <button class="control-btn primary" id="againBtn" type="button">Start over</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>189 questions mapped to the 19 task statements in the official CLF-C02 exam guide.
+     Written for IST-2134 at MGCCC. Not affiliated with or endorsed by Amazon Web Services.</p>
+</footer>
+
+<script src="questions/domain1.js"></script>
+<script src="questions/domain2.js"></script>
+<script src="questions/domain3.js"></script>
+<script src="questions/domain4.js"></script>
+<script src="engine.js"></script>
+</body>
+</html>
